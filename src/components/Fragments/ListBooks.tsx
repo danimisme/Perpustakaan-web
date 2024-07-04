@@ -5,29 +5,46 @@ import AddBook from "../Form/AddBook";
 import { showForm } from "../../redux/features/formAddSlice";
 import ModalDelete from "../Modals/ModalDelete";
 import EditBook from "../Form/EditBook";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ListBooks() {
   const books = useAppSelector((state) => state.book.books);
   const dispacth = useAppDispatch();
   return (
-    <div className="max-w-6xl mx-auto mt-24">
-      <div className="flex gap-4 justify-center">
-        <h1 className="text-3xl font-semibold">Daftar Buku</h1>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
-          onClick={() => dispacth(showForm())}
-        >
-          <IoIosAddCircleOutline className="inline h-6 w-6 mr-1" /> Tambah Buku
-        </button>
-      </div>
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-        {books.map((book) => (
-          <CardBook key={book.id} book={book} />
-        ))}
+    <>
+      <div className="max-w-6xl mx-auto mt-24">
+        <div className="flex gap-4 justify-center">
+          <h1 className="text-3xl font-semibold">Daftar Buku</h1>
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+            onClick={() => dispacth(showForm())}
+          >
+            <IoIosAddCircleOutline className="inline h-6 w-6 mr-1" /> Tambah
+            Buku
+          </button>
+        </div>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+          {books.map((book) => (
+            <CardBook key={book.id} book={book} />
+          ))}
+        </div>
       </div>
       <AddBook />
       <EditBook />
       <ModalDelete />
-    </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   );
 }

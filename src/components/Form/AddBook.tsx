@@ -6,7 +6,7 @@ import { addBook } from "../../redux/features/bookSlice";
 import uniqid from "uniqid";
 import { Book } from "../../models/Book";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function AddBook() {
@@ -119,7 +119,6 @@ export default function AddBook() {
           </form>
         </div>
       </div>
-      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }

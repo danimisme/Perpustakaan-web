@@ -5,6 +5,7 @@ import { hideEditForm } from "../../redux/features/formEditSlice";
 import { editBook } from "../../redux/features/bookSlice";
 import { Book } from "../../models/Book";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function EditBook() {
   const [message, setMessage] = useState<string>("");
@@ -70,6 +71,7 @@ export default function EditBook() {
     }
 
     form.reset();
+    toast.info("Buku Berhasil diedit");
     dispacth(editBook(bookData));
     dispacth(hideEditForm());
   };
