@@ -5,8 +5,10 @@ import { hideForm } from "../../redux/features/formSlice";
 import { addBook } from "../../redux/features/bookSlice";
 import uniqid from "uniqid";
 import { Book } from "../../models/Book";
+import { useState } from "react";
 
 export default function AddBook() {
+  const [message, setMessage] = useState<string>("");
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
@@ -17,6 +19,54 @@ export default function AddBook() {
       year: form.year.value,
       genre: form.genre.value,
     };
+    const regex = /^[a-zA-Z0-9\s]*$/;
+    const letters = /[a-zA-Z]/;
+    if (!regex.test(bookData.title) || !letters.test(bookData.title)) {
+      setMessage(
+        "Judul buku tidak boleh mengandung simbol dan harus mengandung huruf"
+      );
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      return;
+    }
+
+    if (!regex.test(bookData.author) || !letters.test(bookData.author)) {
+      setMessage(
+        "Nama pengarang buku tidak boleh mengandung simbol harus mengandung huruf"
+      );
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      return;
+    }
+
+    if (bookData.year < 1900 || bookData.year > 2023) {
+      setMessage("Tahun buku tidak valid, harus antara 1900 - 2024 !");
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      return;
+    }
+
+    if (!bookData.genre) {
+      setMessage("Harap pilih genre buku !");
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+      return;
+    }
+
+    for (const data in bookData) {
+      if (!bookData[data as keyof Book]) {
+        setMessage(`Harap isi semua data !`);
+        setTimeout(() => {
+          setMessage("");
+        }, 3000);
+        return;
+      }
+    }
+
     dispacth(addBook(bookData));
     dispacth(hideForm());
   };
@@ -36,6 +86,11 @@ export default function AddBook() {
       >
         <h1 className="text-xl font-semibold mb-4 ">Tambah Buku</h1>
         <form onSubmit={handleSubmit}>
+          {message.length > 0 && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              <p className="text-red-500 text-sm">{message}</p>
+            </div>
+          )}
           <InputForm name="booktitle" label="Judul Buku" type="text" />
           <InputForm name="author" label="Pengarang" type="text" />
           <InputForm name="year" label="Tahun" type="number" />
