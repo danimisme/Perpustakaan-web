@@ -10,16 +10,16 @@ export const formEditSlice = createSlice({
     name : "formEdit",
     initialState,
     reducers : {
-        showForm : (state, action) => {
+        showEditForm : (state, action) => {
             state.isShow = true;
             state.book = action.payload
         },
-        hideForm : (state) => {
+        hideEditForm : (state) => {
             state.isShow = false;
             state.book = {} as Book
         }
     }
 })
 
-export const { showForm, hideForm } = formEditSlice.actions;
+export const { showEditForm, hideEditForm } = formEditSlice.actions;
 export default formEditSlice.reducer
