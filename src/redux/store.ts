@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import bookReducer from './features/bookSlice'
-import formReducer from './features/formSlice'
+import formAddReducer from './features/formAddSlice'
 import modalDeleteReducer from './features/modalDeleteSlice'
 
 export const store = configureStore({
   reducer: {
     book: bookReducer,
-    form: formReducer,
+    formAdd: formAddReducer,
     modalDelete: modalDeleteReducer
   },
 })

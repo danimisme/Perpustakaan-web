@@ -2,7 +2,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import CardBook from "./CardBook";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import AddBook from "../Form/AddBook";
-import { showForm } from "../../redux/features/formSlice";
+import { showForm } from "../../redux/features/formAddSlice";
 import ModalDelete from "../Modals/ModalDelete";
 
 export default function ListBooks() {

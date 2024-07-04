@@ -4,8 +4,8 @@ const initialState= {
     isShow : false,
 }
 
-export const formSlice = createSlice({
-    name : "form",
+export const formAddSlice = createSlice({
+    name : "formAdd",
     initialState,
     reducers : {
         showForm : (state) => {
@@ -19,5 +19,5 @@ export const formSlice = createSlice({
 })
 
 
-export const { showForm, hideForm } = formSlice.actions;
-export default formSlice.reducer
+export const { showForm, hideForm } = formAddSlice.actions;
+export default formAddSlice.reducer

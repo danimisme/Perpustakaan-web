@@ -1,7 +1,7 @@
 import InputForm from "../FormElements/InputForm";
 import SelectOption from "../FormElements/SelectOption";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { hideForm } from "../../redux/features/formSlice";
+import { hideForm } from "../../redux/features/formAddSlice";
 import { addBook } from "../../redux/features/bookSlice";
 import uniqid from "uniqid";
 import { Book } from "../../models/Book";
@@ -72,7 +72,7 @@ export default function AddBook() {
     dispacth(hideForm());
   };
 
-  const isShow = useAppSelector((state) => state.form.isShow);
+  const isShow = useAppSelector((state) => state.formAdd.isShow);
   const dispacth = useAppDispatch();
   return (
     <div
