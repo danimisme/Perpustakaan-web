@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import AddBook from "../Form/AddBook";
 import { showForm } from "../../redux/features/formAddSlice";
 import ModalDelete from "../Modals/ModalDelete";
+import EditBook from "../Form/EditBook";
 
 export default function ListBooks() {
   const books = useAppSelector((state) => state.book.books);
@@ -25,6 +26,7 @@ export default function ListBooks() {
         ))}
       </div>
       <AddBook />
+      <EditBook />
       <ModalDelete />
     </div>
   );
