@@ -4,9 +4,11 @@ export default function Input({
   name,
   type,
   onChange,
+  defaultValue = "",
 }: {
   name: string;
   type: string;
+  defaultValue?: string | number;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }) {
   return (
@@ -16,6 +18,7 @@ export default function Input({
       id={name}
       className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-700 peer"
       placeholder=" "
+      defaultValue={defaultValue}
       onChange={onChange}
     />
   );
