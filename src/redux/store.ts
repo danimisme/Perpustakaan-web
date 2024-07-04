@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import bookReducer from './features/bookSlice'
+import formReducer from './features/formSlice'
 
 export const store = configureStore({
   reducer: {
     book: bookReducer,
+    form: formReducer
   },
 })
 
