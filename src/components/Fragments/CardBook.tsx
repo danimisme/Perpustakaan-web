@@ -3,8 +3,11 @@ import { Book } from "../../models/Book";
 import { FaUser } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import { AiOutlineTag } from "react-icons/ai";
+import { showDeleteModal } from "../../redux/features/modalDeleteSlice";
+import { useAppDispatch } from "../../redux/hooks";
 
 export default function CardBook({ book }: { book: Book }) {
+  const dispacth = useAppDispatch();
   return (
     <div className="flex flex-col  justify-between bg-blue-200 p-4 rounded-lg relative group hover:-translate-y-2 hover:shadow-xl transition duration-300">
       <div className="space-y-1 mb-4">
@@ -36,7 +39,10 @@ export default function CardBook({ book }: { book: Book }) {
         <button className="bg-white text-blue-700 py-2 px-2 border border-gray-400 rounded-full hover:translate-y-1 hover:bg-slate-300 transition duration-300 ">
           <MdEdit />
         </button>
-        <button className="bg-white text-red-500 py-2 px-2 border border-gray-400 rounded-full hover:translate-y-1 hover:bg-slate-300 transition duration-300 ">
+        <button
+          className="bg-white text-red-500 py-2 px-2 border border-gray-400 rounded-full hover:translate-y-1 hover:bg-slate-300 transition duration-300 "
+          onClick={() => dispacth(showDeleteModal(book))}
+        >
           <MdDelete />
         </button>
       </div>
