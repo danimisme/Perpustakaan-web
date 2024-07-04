@@ -7,10 +7,24 @@ import ModalDelete from "../Modals/ModalDelete";
 import EditBook from "../Form/EditBook";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SearchInput from "../FormElements/SearchInput";
+import { useState } from "react";
 
 export default function ListBooks() {
   const books = useAppSelector((state) => state.book.books);
   const dispacth = useAppDispatch();
+  const [filteredBooks, setFilteredBooks] = useState(books);
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const query = event.target.value;
+    const filtered = books.filter(
+      (book) =>
+        book.title.toLowerCase().includes(query.toLowerCase()) ||
+        book.author.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredBooks(filtered);
+    console.log(filtered);
+  };
+
   return (
     <>
       <div className="max-w-6xl mx-auto mt-24">
@@ -24,27 +38,27 @@ export default function ListBooks() {
             Buku
           </button>
         </div>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-          {books.map((book) => (
-            <CardBook key={book.id} book={book} />
-          ))}
+        <div className="mt-8 ">
+          <div>
+            <SearchInput
+              name="search"
+              placeholder="Cari judul atau pengarang..."
+              onChange={(event) => handleSearch(event)}
+            />
+          </div>
+        </div>
+        <div className="mt-8 mb-20 min-h-72 ">
+          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+            {filteredBooks.map((book) => (
+              <CardBook key={book.id} book={book} />
+            ))}
+          </div>
         </div>
       </div>
       <AddBook />
       <EditBook />
       <ModalDelete />
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </>
   );
 }
