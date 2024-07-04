@@ -80,6 +80,19 @@ export default function ListBooks() {
     }
   }, [books, searchQuery, searchGenre, searchYear, sortby]);
 
+  const handleReset = () => {
+    setSearchQuery("");
+    setSearchGenre("");
+    setSearchYear("");
+    setSortby("");
+    const filterGenre = document.getElementById("genre") as HTMLSelectElement;
+    const filterYear = document.getElementById("year") as HTMLSelectElement;
+    const filterSort = document.getElementById("sort") as HTMLSelectElement;
+    filterGenre.selectedIndex = 0;
+    filterYear.selectedIndex = 0;
+    filterSort.selectedIndex = 0;
+  };
+
   return (
     <>
       <div className="max-w-6xl mx-auto mt-24">
@@ -132,6 +145,14 @@ export default function ListBooks() {
               </select>
             </div>
           </div>
+        </div>
+        <div className="flex justify-end mx-4 mt-2">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={handleReset}
+          >
+            Reset Filter
+          </button>
         </div>
         {message && (
           <div className=" border border-red-400 text-red-700 px-4 py-3 rounded m-4 p-4">
