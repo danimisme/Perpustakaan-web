@@ -95,7 +95,7 @@ export default function ListBooks() {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto mt-24">
+      <div id="listbooks" className="max-w-6xl mx-auto mt-24">
         <div className="flex gap-4 justify-center">
           <h1 className="text-3xl font-semibold">Daftar Buku</h1>
           <button

@@ -9,7 +9,10 @@ export default function Header() {
           Simpan dan kelola buku Anda dengan mudah. Mulailah sekarang dan
           nikmati akses cepat ke koleksi buku Anda!
         </p>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => (window.location.href = "#listbooks")}
+        >
           Mulai
         </button>
       </div>
