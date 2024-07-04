@@ -1,10 +1,10 @@
 import { IoIosAddCircleOutline } from "react-icons/io";
-import booksData from "../../data/books.json";
-import { Book } from "../../models/Book";
 import CardBook from "./CardBook";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 export default function ListBooks() {
-  const books: Book[] = booksData;
+  const books = useAppSelector((state) => state.book.books);
+
   return (
     <div className="max-w-6xl mx-auto mt-24">
       <div className="flex gap-4 justify-center">
