@@ -1,10 +1,13 @@
 import "./App.css";
+import Header from "./components/Fragments/Header";
+import Navbar from "./components/Fragments/Navbar";
 
 function App() {
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold ">Hello World</h1>
+        <Navbar />
+        <Header />
       </div>
     </>
   );
