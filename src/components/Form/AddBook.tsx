@@ -67,6 +67,7 @@ export default function AddBook() {
       }
     }
 
+    form.reset();
     dispacth(addBook(bookData));
     dispacth(hideForm());
   };
