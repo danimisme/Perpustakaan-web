@@ -19,6 +19,7 @@ export default function ListBooks() {
   const [searchYear, setSearchYear] = useState<string>("");
   const [filteredBooks, setFilteredBooks] = useState(books);
   const [message, setMessage] = useState<string>("");
+  const [sortby, setSortby] = useState<string>("");
   const [booksYear, setBooksYear] = useState<string[]>([]);
 
   useEffect(() => {
@@ -47,6 +48,23 @@ export default function ListBooks() {
       filtered = filtered.filter((book) => book.year.toString() === searchYear);
       console.log("year search", filtered);
     }
+    if (sortby === "year-asc") {
+      filtered = [...filtered].sort((a, b) => {
+        return a.year - b.year;
+      });
+    } else if (sortby === "year-desc") {
+      filtered = [...filtered].sort((a, b) => {
+        return b.year - a.year;
+      });
+    } else if (sortby === "title-asc") {
+      filtered = [...filtered].sort((a, b) => {
+        return a.title.localeCompare(b.title);
+      });
+    } else if (sortby === "title-desc") {
+      filtered = [...filtered].sort((a, b) => {
+        return b.title.localeCompare(a.title);
+      });
+    }
 
     setFilteredBooks(filtered);
     if (filtered.length === 0) {
@@ -60,7 +78,7 @@ export default function ListBooks() {
     } else {
       setMessage("");
     }
-  }, [books, searchQuery, searchGenre, searchYear]);
+  }, [books, searchQuery, searchGenre, searchYear, sortby]);
 
   return (
     <>
@@ -100,6 +118,19 @@ export default function ListBooks() {
                 setSearchYear(event.target.value);
               }}
             />
+            <div>
+              <select
+                id="sort"
+                className="bg-transparent border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                onChange={(event) => setSortby(event.target.value)}
+              >
+                <option value="">Urutkan</option>
+                <option value="year-asc">Tahun &#8648;</option>
+                <option value="year-desc">Tahun &#8650;</option>
+                <option value="title-asc">Judul &#8648;</option>
+                <option value="title-desc">Judul &#8650;</option>
+              </select>
+            </div>
           </div>
         </div>
         {message && (
