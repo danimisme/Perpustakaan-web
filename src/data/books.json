@@ -1,62 +1,41 @@
 [
     {
-        "id": "1",
-        "title": "Belajar Front-End Web Development",
-        "author": "Dhani",
-        "year": 2022,
-        "genre": "Education"
-    },
-    {
-        "id": "2",
-        "title": "Belajar React",
-        "author": "Jordan Walke", 
-        "year": 2013,
-        "genre": "Education"
-    },
-    {
-        "id": "3",
-        "title": "Belajar NodeJS",
-        "author": "Ryan Dahl",
-        "year": 2009,
-        "genre": "Education"
-    },
-    {
-        "id": "4",
+        "id": "ly784o7e",
         "title": "Future Technologies",
         "author": "Elon Musk",
         "year": 2023,
         "genre": "Science"
     },
     {
-        "id": "5",
+        "id": "ly78531v",
         "title": "Python Programming for Beginners",
         "author": "Guido van Rossum",
         "year": 2022,
         "genre": "Education"
     },
     {
-        "id": "6",
+        "id": "ly785ik5",
         "title": "A Brief History of Time",
         "author": "Stephen Hawking",
         "year": 1988,
         "genre": "Science"
     },
     {
-        "id": "7",
+        "id": "ly785wny",
         "title": "A People's History of the United States",
         "author": "Howard Zinn",
         "year": 1980,
         "genre": "History"
     },
     {
-        "id": "8",
+        "id": "ly78693r",
         "title": "Sapiens: A Brief History of Humankind",
         "author": "Yuval Noah Harari",
         "year": 2011,
         "genre": "History"
     },
     {
-        "id": "9",
+        "id": "ly786if4",
         "title": "Guns, Germs, and Steel",
         "author": "Jared Diamond",
         "year": 1997,

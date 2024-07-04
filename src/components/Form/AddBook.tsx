@@ -2,8 +2,25 @@ import InputForm from "../FormElements/InputForm";
 import SelectOption from "../FormElements/SelectOption";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { hideForm } from "../../redux/features/formSlice";
+import { addBook } from "../../redux/features/bookSlice";
+import uniqid from "uniqid";
+import { Book } from "../../models/Book";
 
 export default function AddBook() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const bookData: Book = {
+      id: uniqid(),
+      title: form.booktitle.value,
+      author: form.author.value,
+      year: form.year.value,
+      genre: form.genre.value,
+    };
+    dispacth(addBook(bookData));
+    dispacth(hideForm());
+  };
+
   const isShow = useAppSelector((state) => state.form.isShow);
   const dispacth = useAppDispatch();
   return (
@@ -13,13 +30,13 @@ export default function AddBook() {
       }`}
     >
       <div
-        className={`w-full md:max-w-sm mx-auto bg-white bg-opacity-50 backdrop-blur-sm p-6 rounded-lg transition duration-300 ${
+        className={`w-full md:max-w-sm mx-4 md:mx-auto bg-white bg-opacity-50 backdrop-blur-sm p-6 rounded-lg transition duration-300 ${
           isShow ? "translate-y-0" : "translate-y-full"
         }`}
       >
         <h1 className="text-xl font-semibold mb-4 ">Tambah Buku</h1>
-        <form action="">
-          <InputForm name="title" label="Judul Buku" type="text" />
+        <form onSubmit={handleSubmit}>
+          <InputForm name="booktitle" label="Judul Buku" type="text" />
           <InputForm name="author" label="Pengarang" type="text" />
           <InputForm name="year" label="Tahun" type="number" />
           <SelectOption
