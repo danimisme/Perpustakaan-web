@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { CiCalendarDate } from "react-icons/ci";
 import { AiOutlineTag } from "react-icons/ai";
 import { showDeleteModal } from "../../redux/features/modalDeleteSlice";
+import { showEditForm } from "../../redux/features/formEditSlice";
 import { useAppDispatch } from "../../redux/hooks";
 
 export default function CardBook({ book }: { book: Book }) {
@@ -36,7 +37,10 @@ export default function CardBook({ book }: { book: Book }) {
         </p>
       </div>
       <div className="absolute bottom-4 right-4 flex gap-2">
-        <button className="bg-white text-blue-700 py-2 px-2 border border-gray-400 rounded-full hover:translate-y-1 hover:bg-slate-300 transition duration-300 ">
+        <button
+          className="bg-white text-blue-700 py-2 px-2 border border-gray-400 rounded-full hover:translate-y-1 hover:bg-slate-300 transition duration-300 "
+          onClick={() => dispacth(showEditForm(book))}
+        >
           <MdEdit />
         </button>
         <button
