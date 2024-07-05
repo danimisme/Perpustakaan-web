@@ -43,7 +43,7 @@ export default function AddBook() {
       return;
     }
 
-    if (bookData.year < 1900 || bookData.year > 2023) {
+    if (bookData.year < 1900 || bookData.year > 2024) {
       setMessage("Tahun buku tidak valid, harus antara 1900 - 2024 !");
       setTimeout(() => {
         setMessage("");
