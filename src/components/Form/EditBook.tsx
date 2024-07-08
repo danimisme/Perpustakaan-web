@@ -87,7 +87,7 @@ export default function EditBook() {
           isShow ? "translate-y-0" : "translate-y-full"
         }`}
       >
-        <h1 className="text-xl font-semibold mb-4 ">Tambah Buku</h1>
+        <h1 className="text-xl font-semibold mb-4 ">Edit Buku</h1>
         <form onSubmit={handleSubmit}>
           {message.length > 0 && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
